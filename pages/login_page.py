@@ -1,40 +1,35 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from pages.base_page import BasePage
+from config import BASE_URL
  
  
-class LoginPage:
- 
-    URL = "https://finmore.netlify.app/"
+class LoginPage(BasePage):
  
     LOGIN_FORM = (By.CSS_SELECTOR, '[data-testid="login-form"]')
     EMAIL_INPUT = (By.CSS_SELECTOR, '[data-testid="login-email-input"]')
     PASSWORD_INPUT = (By.CSS_SELECTOR, '[data-testid="login-password-input"]')
     SUBMIT_BUTTON = (By.CSS_SELECTOR, '[data-testid="login-submit-button"]')
+    REGISTER_SWITCH = (By.CSS_SELECTOR, '[data-testid="switch-to-register-button"]')
  
-    def __init__(self, driver):
-        self.driver = driver
-        self.wait = WebDriverWait(driver, 10)
+    def open_login_page(self):
+        self.open(BASE_URL)
  
-    def open(self):
-        self.driver.get(self.URL)
+    def wait_loaded_login_form(self):
+        self.wait_visible(self.LOGIN_FORM)
  
-    def wait_for_page_loaded(self):
-        self.wait.until(
-            EC.visibility_of_element_located(self.LOGIN_FORM)
-        )
+    def enter_email(self, email):
+        self.type(self.EMAIL_INPUT, email)
  
-    def get_title(self):
-        return self.driver.title
- 
-    def is_login_form_visible(self):
-        return self.driver.find_element(*self.LOGIN_FORM).is_displayed()
+    def enter_password(self, password):
+        self.type(self.PASSWORD_INPUT, password)
  
     def click_submit(self):
-        self.driver.find_element(*self.SUBMIT_BUTTON).click()
+        self.click(self.SUBMIT_BUTTON)
  
-    def get_email_value(self):
-        return self.driver.find_element(*self.EMAIL_INPUT).get_attribute("value")
+    def click_register_switch(self):
+        self.click(self.REGISTER_SWITCH)
  
-    def get_password_value(self):
-        return self.driver.find_element(*self.PASSWORD_INPUT).get_attribute("value")
+    def login(self, email, password):
+        self.enter_email(email)
+        self.enter_password(password)
+        self.click_submit()
