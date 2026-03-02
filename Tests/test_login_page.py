@@ -115,11 +115,7 @@ def test_login_form_is_visible(driver):
     assert driver.find_element(By.XPATH, TEXT_LOGIN_INSIDE_SUBMIT_BUTTON).is_displayed()
 
 
- #For checking that present DEVIDER line:  
-    assert driver.find_element(By.CSS_SELECTOR, DEVIDER_LINE).is_displayed()
-
-
- #For checking text "Немає облікового запису?":
+  #For checking text "Немає облікового запису?":
     assert driver.find_element(By.XPATH, TEXT_NEMAE_OBLIC_ZAPUS).is_displayed()
  #For checking hypertext (type button) "Зареєструватися":
     assert driver.find_element(By.CSS_SELECTOR, REGISTER_BUTTON).is_displayed()
@@ -127,6 +123,10 @@ def test_login_form_is_visible(driver):
     assert driver.find_element(By.XPATH, TEXT_FOR_HYPERTEXT_ZAREESTRUVATIS).is_displayed()
  
  
+ #For checking that present DEVIDER line:  
+    assert driver.find_element(By.CSS_SELECTOR, DEVIDER_LINE).is_displayed()
+
+    
  #For checking text "Демо облікові записи:":
     assert driver.find_element(By.XPATH, TEXT_DEMO_OBLIC_ZAPUS).is_displayed()
  #For checking text for demo email "admin@demo.com / admin123":
