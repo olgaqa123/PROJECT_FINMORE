@@ -1,4 +1,5 @@
 import pytest
+from Tests.data.login_data import LOGIN_EMAIL, LOGIN_PASSWORD
 from pages.login_page import LoginPage
 from config import EXPECTED_TITLE
  
@@ -21,3 +22,14 @@ def test_login_with_empty_fields(driver):
  
     assert page.get_value(page.EMAIL_INPUT) == ""
     assert page.get_value(page.PASSWORD_INPUT) == ""
+
+def test_login_with_valid_fields(driver):
+    page = LoginPage(driver)
+    page.open_login_page()
+    page.wait_loaded_login_form()
+
+    page.login(
+        email = LOGIN_EMAIL,
+        password = LOGIN_PASSWORD
+    )
+ 

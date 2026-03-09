@@ -26,3 +26,9 @@ class RegisterPage(BasePage):
  
     def click_login_switch(self):
         self.click(self.LOGIN_SWITCH)
+
+    def fill_registration_with_not_same_password_and_confirm_password(self, name, email, password1, password2):
+        self.type(self.NAME_INPUT, name)
+        self.type(self.EMAIL_INPUT, email)
+        self.type(self.PASSWORD_INPUT, password1)
+        self.type(self.CONFIRM_PASSWORD_INPUT, password2)    
