@@ -35,3 +35,7 @@ class BasePage:
  
     def get_title(self):
         return self.driver.title
+    
+    def fill(self, locator, value):
+        element = self.driver.find_element(*locator)
+        element.send_keys(value)

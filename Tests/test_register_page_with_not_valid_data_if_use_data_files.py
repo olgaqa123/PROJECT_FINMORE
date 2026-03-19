@@ -24,6 +24,8 @@ def test_register_with_empty_fields(driver):
     assert register_page.get_value(register_page.EMAIL_INPUT) == REGISTER_EMAIL_EMPTY
     assert register_page.get_value(register_page.PASSWORD_INPUT) == REGISTER_PASSWORD_EMPTY
     assert register_page.get_value(register_page.CONFIRM_PASSWORD_INPUT) == REGISTER_PASSWORD_EMPTY
+    assert register_page.is_visible(register_page.EMAIL_ERROR_TEXT)
+
 
 
 def test_register_page_is_still_shown_if_register_with_empty_only_name(driver):
