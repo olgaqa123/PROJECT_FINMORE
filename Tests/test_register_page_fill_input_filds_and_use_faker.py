@@ -3,29 +3,6 @@ from pages.register_page import RegisterPage
 from faker import Faker
  
  
-
-TEST_NAME = "Test User"
-TEST_EMAIL = "testuser123@gmail.com"
-TEST_PASSWORD = "password123"
- 
- 
-def test_register_with_valid_data0(driver):
-    login_page = LoginPage(driver)
-    login_page.open_login_page()
-    login_page.wait_loaded_login_form()
-    login_page.click_register_switch()
- 
-    register_page = RegisterPage(driver)
-    register_page.wait_loaded_register_form()
- 
-    register_page.fill_registration_form(
-        name=TEST_NAME,
-        email=TEST_EMAIL,
-        password=TEST_PASSWORD
-    )
- 
-    register_page.submit()
-
 #Test  via using faker №1 : 
 # UA (Ukraine), domain exectly  "gmail.com", password with 10 characters WITOUT numbers and at list 1 character in password is lower character
 fake = Faker("uk_UA")
@@ -37,16 +14,8 @@ def generate_user():
         "password": fake.password(length=10, digits=False, lower_case=True)
     }
 
-def test_register_with_valid_data1(driver):
+def test_register_with_valid_data1(register_page):
     user = generate_user()
- 
-    login_page = LoginPage(driver)
-    login_page.open_login_page()
-    login_page.wait_loaded_login_form()
-    login_page.click_register_switch()
- 
-    register_page = RegisterPage(driver)
-    register_page.wait_loaded_register_form()
  
     register_page.fill_registration_form(
         name=user["name"],
@@ -71,16 +40,8 @@ def generate_user2():
         "password": fake.password(length=20, special_chars=False, upper_case=False)
     }
 
-def test_register_with_valid_data2(driver):
+def test_register_with_valid_data2(register_page):
     user = generate_user2()
- 
-    login_page = LoginPage(driver)
-    login_page.open_login_page()
-    login_page.wait_loaded_login_form()
-    login_page.click_register_switch()
- 
-    register_page = RegisterPage(driver)
-    register_page.wait_loaded_register_form()
  
     register_page.fill_registration_form(
         name=user["name"],
@@ -106,16 +67,8 @@ def generate_user3():
         "password": fake.password(length=30, digits=False, special_chars=True, upper_case=True, lower_case=False)
     }
 
-def test_register_with_valid_data3(driver):
+def test_register_with_valid_data3(register_page):
     user = generate_user3()
- 
-    login_page = LoginPage(driver)
-    login_page.open_login_page()
-    login_page.wait_loaded_login_form()
-    login_page.click_register_switch()
- 
-    register_page = RegisterPage(driver)
-    register_page.wait_loaded_register_form()
  
     register_page.fill_registration_form(
         name=user["name"],
