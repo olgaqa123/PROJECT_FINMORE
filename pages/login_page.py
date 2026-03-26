@@ -10,7 +10,6 @@ class LoginPage(BasePage):
     PASSWORD_INPUT = (By.CSS_SELECTOR, '[data-testid="login-password-input"]')
     SUBMIT_BUTTON = (By.CSS_SELECTOR, '[data-testid="login-submit-button"]')
     REGISTER_SWITCH = (By.CSS_SELECTOR, '[data-testid="switch-to-register-button"]')
-    USER_NAME_REGISTER = (By.CSS_SELECTOR, '[data-testid="user-menu-trigger"]')
 
  
     def open_login_page(self):
