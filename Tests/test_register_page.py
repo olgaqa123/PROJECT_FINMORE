@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from pages.register_page import RegisterPage
  
  
 BASE_URL = "https://finmore.netlify.app/"

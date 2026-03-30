@@ -12,6 +12,16 @@ def test_register_page_open(driver):
     register_page.wait_loaded_register_form()
  
     assert register_page.is_visible(register_page.REGISTER_FORM)
+    assert register_page.is_visible(register_page.NAME_INPUT)
+    assert register_page.is_visible(register_page.EMAIL_INPUT)
+    assert register_page.is_visible(register_page.PASSWORD_INPUT)
+    assert register_page.is_visible(register_page.CONFIRM_PASSWORD_INPUT)
+    assert register_page.is_visible(register_page.CURRENCY_SELECT)
+    assert register_page.is_visible(register_page.SUBMIT_BUTTON)
+    assert register_page.is_visible(register_page.LOGIN_SWITCH)
+
+
+
  
  
 def test_register_with_valid_data(driver):

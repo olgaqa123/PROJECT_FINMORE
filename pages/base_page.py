@@ -1,5 +1,6 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import Select
  
  
 class BasePage:
@@ -39,3 +40,8 @@ class BasePage:
     def fill(self, locator, value):
         element = self.driver.find_element(*locator)
         element.send_keys(value)
+
+    def select_by_value(self, locator, value):
+        element = self.driver.find_element(*locator)
+        dropdown = Select(element)
+        dropdown.select_by_value(value)  

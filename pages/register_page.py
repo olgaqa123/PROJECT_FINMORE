@@ -13,6 +13,14 @@ class RegisterPage(BasePage):
     LOGIN_SWITCH = (By.CSS_SELECTOR, '[data-testid="switch-to-login-button"]')
     EMAIL_ERROR_TEXT = (By.CSS_SELECTOR, '[data-testid="email-error"]')
     CONFIRM_PASSWORD_ERROR_TEXT = (By.CSS_SELECTOR, '[data-testid="confirm-password-error"]')
+    CURRENCY_SELECT = (By.CSS_SELECTOR, '[data-testid="register-currency-select"]')
+    CURRENCY_OPTION_UAH = (By.CSS_SELECTOR, '[data-testid="currency-option-UAH"]')
+    CURRENCY_OPTION_USD = (By.CSS_SELECTOR, '[data-testid="currency-option-USD"]')
+    CURRENCY_OPTION_EUR = (By.CSS_SELECTOR, '[data-testid="currency-option-EUR"]')
+    CURRENCY_OPTION_GBP = (By.CSS_SELECTOR, '[data-testid="currency-option-GBP"]')
+    TOGGLE_PASSWORD_VISIBILITY = (By.CSS_SELECTOR, '[data-testid="toggle-password-visibility"]')
+    TOGGLE_CONFIRM_PASSWORD_VISIBILITY = (By.CSS_SELECTOR, '[data-testid="toggle-confirm-password-visibility"]')
+
  
     def wait_loaded_register_form(self):
         self.wait_visible(self.REGISTER_FORM)
