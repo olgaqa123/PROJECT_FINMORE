@@ -46,6 +46,7 @@ class TestWordPressPostsCRUD(unittest.TestCase):
             "content": "This is test content created via API automation",
             "status": "publish",
             "excerpt": "Test excerpt",
+            "slug": "abcd"
             
         }
  
@@ -85,6 +86,7 @@ class TestWordPressPostsCRUD(unittest.TestCase):
         self.assertEqual(body["date_gmt"], post_data["date_gmt"])
         self.assertNotEqual(body["slug"], "123av")
         #self.assertEqual(body["slug"], "")
+        self.assertEqual(body["slug"], "abcd")
         self.assertEqual(body["status"], "publish")
         self.assertEqual(body["password"], "")
         self.assertEqual(body["title"]["raw"], post_data["title"])
@@ -106,8 +108,6 @@ class TestWordPressPostsCRUD(unittest.TestCase):
         self.assertEqual(body["tags"], [])
         self.assertNotEqual(body["link"], "")
 
-
- 
         print(f"Created post ID: {TestWordPressPostsCRUD.created_post_id}")
  
     # ------------------------------------------------------------------

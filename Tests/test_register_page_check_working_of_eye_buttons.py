@@ -1,4 +1,5 @@
 import pytest
+from Tests.data.register_data import REGISTER_PASSWORD
 from pages.base_page import BasePage
 from pages.register_page import RegisterPage
 
@@ -12,7 +13,7 @@ def test_check_working_of_eye_button_for_password_on_register_page(register_page
     assert register_page.find(register_page.TOGGLE_PASSWORD_VISIBILITY).get_attribute("aria-label") == "Show password"
 
     # 2 Input in passworg field some characters and check that no changes for type (mean shown dots instead of characters) and still shown eye button
-    register_page.fill(register_page.PASSWORD_INPUT, "123456789a")
+    register_page.fill(register_page.PASSWORD_INPUT, REGISTER_PASSWORD)
     assert register_page.find(register_page.PASSWORD_INPUT).get_attribute("type") == "password"
     assert register_page.find(register_page.TOGGLE_PASSWORD_VISIBILITY).get_attribute("aria-label") == "Show password"
     
@@ -40,7 +41,7 @@ def test_checkworking_of_eye_button_for_confirm_password_on_register_page(regist
     assert register_page.find(register_page.TOGGLE_CONFIRM_PASSWORD_VISIBILITY).get_attribute("aria-label") == "Show password"
 
     # 2 Input in confirm passworg field some characters and check that no changes for type (mean shown dots instead of characters) and still shown eye button
-    register_page.fill(register_page.CONFIRM_PASSWORD_INPUT, "abcdefg123")
+    register_page.fill(register_page.CONFIRM_PASSWORD_INPUT, REGISTER_PASSWORD)
     assert register_page.find(register_page.CONFIRM_PASSWORD_INPUT).get_attribute("type") == "password"
     assert register_page.find(register_page.TOGGLE_CONFIRM_PASSWORD_VISIBILITY).get_attribute("aria-label") == "Show password"
     
