@@ -40,10 +40,13 @@ class TestWordPressPostsCRUD(unittest.TestCase):
     def test_01_create_should_create_new_post(self):
         """CREATE — Should create a new post"""
         post_data = {
+            "date": "2026-04-09T15:42:34",
+            "date_gmt": "2026-04-09T15:42:34",
             "title": "Test Post from Python Requests",
             "content": "This is test content created via API automation",
             "status": "publish",
             "excerpt": "Test excerpt",
+            
         }
  
         response = requests.post(
@@ -57,9 +60,53 @@ class TestWordPressPostsCRUD(unittest.TestCase):
         TestWordPressPostsCRUD.created_post_id = body["id"]
  
         self.assertIn("id", body)
-        self.assertEqual(body["title"]["rendered"], post_data["title"])
-        self.assertEqual(body["title"]["raw"], post_data["title"])
+        self.assertIn("date", body)
+        self.assertIn("date_gmt", body)
+        self.assertIn("slug", body)
+        self.assertIn("status", body)
+        self.assertIn("password", body)
+        self.assertIn("title", body)
+        self.assertIn("content", body)
+        self.assertIn("author", body)
+        self.assertIn("excerpt", body)
+        self.assertIn("featured_media", body)
+        self.assertIn("comment_status", body)
+        self.assertIn("ping_status", body)
+        self.assertIn("format", body)
+        self.assertIn("meta", body)
+        self.assertIn("sticky", body)
+        self.assertIn("template", body)
+        self.assertIn("categories", body)
+        self.assertIn("tags", body)
+        self.assertNotIn("force", body)
+        self.assertIn("link", body)
+
+        self.assertEqual(body["date"], post_data["date"])
+        self.assertEqual(body["date_gmt"], post_data["date_gmt"])
+        self.assertNotEqual(body["slug"], "123av")
+        #self.assertEqual(body["slug"], "")
         self.assertEqual(body["status"], "publish")
+        self.assertEqual(body["password"], "")
+        self.assertEqual(body["title"]["raw"], post_data["title"])
+        self.assertEqual(body["title"]["rendered"], post_data["title"])
+        self.assertEqual(body["content"]["raw"], post_data["content"])
+        self.assertEqual(body["content"]["rendered"], '<p>This is test content created via API automation</p>\n')
+        self.assertEqual(body["content"]["protected"], False)
+        self.assertEqual(body["content"]["block_version"], 0)
+        self.assertEqual(body["author"], 1)
+        self.assertEqual(body["excerpt"]["raw"], post_data["excerpt"])
+        self.assertEqual(body["featured_media"], 0)
+        self.assertEqual(body["comment_status"], "open")
+        self.assertEqual(body["ping_status"], "open")
+        self.assertEqual(body["format"], "standard")
+        self.assertEqual(body["meta"]["footnotes"], "")
+        self.assertEqual(body["sticky"], False)
+        self.assertEqual(body["template"], "")
+        self.assertEqual(body["categories"], [1])
+        self.assertEqual(body["tags"], [])
+        self.assertNotEqual(body["link"], "")
+
+
  
         print(f"Created post ID: {TestWordPressPostsCRUD.created_post_id}")
  
