@@ -17,14 +17,14 @@ def test_check_working_of_eye_button_for_password_on_register_page(register_page
     assert register_page.find(register_page.PASSWORD_INPUT).get_attribute("type") == "password"
     assert register_page.find(register_page.TOGGLE_PASSWORD_VISIBILITY).get_attribute("aria-label") == "Show password"
     
-    # 3 Click on  eye icon button inside password field:
+    # 3 Click on  eye icon button inside password field:###
     register_page.click(register_page.TOGGLE_PASSWORD_VISIBILITY)
     
     # 4 Chack that type changed to text (mean characters shown instead of dots in password field) and shown cross eye button:
     assert register_page.find(register_page.PASSWORD_INPUT).get_attribute("type") == "text"
     assert register_page.find(register_page.TOGGLE_PASSWORD_VISIBILITY).get_attribute("aria-label") == "Hide password"
 
-    # 5 Click on  cross eye icon button inside password field:
+    # 5 Click on  cross eye icon button inside password field:###
     register_page.click(register_page.TOGGLE_PASSWORD_VISIBILITY)
 
     # 6 Chack that type changed to password (mean instead characters shown dots in password field) and shown eye icon button:
