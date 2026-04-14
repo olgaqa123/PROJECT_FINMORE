@@ -24,6 +24,7 @@ jobs:
           pip install -r requirements.txt
           pip install faker
           pip install webdriver-manager
+          pip install pytest
  
       - name: Install Chrome
         uses: browser-actions/setup-chrome@v1
