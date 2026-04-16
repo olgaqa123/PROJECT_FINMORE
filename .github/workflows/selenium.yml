@@ -10,30 +10,23 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-      - name:  Checkout repo
+      - name: Checkout repo
         uses: actions/checkout@v4
  
-      - name:  Setup Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.14'
+          python-version: '3.14'   
  
       - name: Install dependencies
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
           pip install faker
-          pip install webdriver-manager
           pip install pytest
  
       - name: Install Chrome
         uses: browser-actions/setup-chrome@v1
  
-      - name:  Install ChromeDriver
-        uses: nanasess/setup-chromedriver@v2
- 
       - name: Run tests
         run: pytest
-
-
-###
