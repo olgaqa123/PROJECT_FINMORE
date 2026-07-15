@@ -2,7 +2,7 @@ import pytest
 from pages.base_page import BasePage
 from pages.register_page import RegisterPage
 
-
+##
 
 def test_checking_changing_currency_on_register_page_VAR1(register_page):
     assert register_page.is_visible(register_page.CURRENCY_SELECT)
